@@ -73,12 +73,15 @@ def main():
 
     # 点击搜索
     bor.find_elements(By.CLASS_NAME, "search_btn")[1].click()
-
+    sleep(1)
     # 找到对应条目
     tbody = bor.find_elements(By.TAG_NAME, "tbody")[1]
     tr = tbody.find_elements(By.TAG_NAME, "tr")[1]
     td = tr.find_elements(By.TAG_NAME, "td")
-    print(td[3].text)
+    if td[3].text == "":
+        print('网站缺少当前数据')
+    else:
+        print(td[3].text)
 
     bor.quit()
 
